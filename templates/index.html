@@ -29,6 +29,9 @@
 	{% endblock navbar %}
 
 	{% block content %}
+	{% if request.user.is_authenticated %}
+	<h1>hello {{request.user.username}}
+	{% endif %}
 	{% endblock content %}
 
 	<!-- javascript stuff -->
