@@ -19,8 +19,9 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
+@receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
+def save_profile(sender, instance, created, **kwargs):
+    user = instance
     if created:
-        UserProfile.objects.create(user=instance)
-    instance.profile.save()
+        profile = UserProfile(user=user)
+        profile.save()
