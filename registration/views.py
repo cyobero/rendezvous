@@ -10,10 +10,10 @@ def register_view(request):
     if form.is_valid():
         user = form.save()
         user.refresh_from_db()  # load profile instance created by signal
-        user.user_profile.birthdate = form.cleaned_data.get('birthdate')
         user.save()
         username = form.cleaned_data.get('username')
-        raw_password = form.cleaned_data.get('password1')
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=raw_password)
         login(request, user)
         return redirect(reverse('success'))
