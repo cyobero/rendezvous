@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from rendezvous.views import index_view
 from login.views import login_view, success_view
+from registration.views import register_view
 
 urlpatterns = [
     # Add Django site authentication urls (for login, logout, and password mgmt)
@@ -26,4 +27,6 @@ urlpatterns = [
     path('', index_view, name='index'),
     path('login/', login_view, name='login'),
     path('login/success/', success_view, name='success'),
+    path('register/', register_view, name='register'),
+    path('register/success', success_view, name='success'),
 ]
