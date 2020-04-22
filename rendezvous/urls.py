@@ -17,7 +17,7 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from rendezvous.views import index_view
-from login.views import login_view, success_view
+from login.views import login_view, success_view, logout_view
 from registration.views import register_view
 
 urlpatterns = [
@@ -29,4 +29,5 @@ urlpatterns = [
     path('login/success/', success_view, name='success'),
     path('register/', register_view, name='register'),
     path('register/success', success_view, name='success'),
+    path('logout/', logout_view, name='logout'),
 ]

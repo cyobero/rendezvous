@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, reverse, redirect
@@ -21,6 +21,12 @@ def login_view(request):
                                                                'errors': errors})
     else:
         return render(request, 'registration/login.html', {'form': form})
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect(reverse('login'))
 
 
 @login_required
