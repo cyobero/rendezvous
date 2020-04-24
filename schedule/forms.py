@@ -10,7 +10,10 @@ class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ['rendezvous', 'date', 'time', ]
-        widgets = {
+        widgets = {  
+            'rendezvous': forms.Select(attrs={
+                'class': 'input100 form-control',
+            }),
             'date': forms.DateInput(attrs={
                 'class': 'input100 form-control datepicker',
                 'placeholder': 'Date',

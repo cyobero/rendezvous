@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'base_form.html' %}
 {% load static %}
 
 {% block page-title %}
@@ -7,12 +7,13 @@
 
 
 
-{% block content %}
 <form method="POST" class="validate-form login100-form">{% csrf_token %}
+   {% block form-title %}
    <span class="login100-form-title p-b-33">
 	Schedule
    </span>
-
+   {% endblock form-title %}
+   {% block form-content %}
    <div class="wrap-input100 validate-input" data-validate = "Valid
    username is required: ex@abc.xyz">
 	{{ form.rendezvous }}
@@ -54,4 +55,4 @@
 
 
 </form>
-{% endblock content %}
+{% endblock form-content %}
