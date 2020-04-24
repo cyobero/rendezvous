@@ -11,14 +11,14 @@ def schedule_view(request):
     booker = request.user
     form = ScheduleForm(request.POST or None)
     if form.is_valid():
-        rendezvous_list = User.objects.all()
         form = form.clean()
         rendezvous = form['rendezvous']
         date = form['date']
         time = form['time']
         # Create and save new `Appointment` object.
-        appt = Appointment(booker=booker, rendezvous=rendezvous, date=date,
-                           time=time).save()
+        appt = Appointment.objects.create(date=date, time=time)
+        appt.booker.add(booker)
+        appt.rendezvous.add(rendezvous)
         return redirect(reverse('success_schedule'))
     else:
         messages.error(request, "error")
