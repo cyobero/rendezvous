@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, reverse
 from schedule.forms import ScheduleForm
 from schedule.models import Appointment
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 # Create your views here.
 @login_required

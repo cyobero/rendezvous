@@ -10,8 +10,3 @@ class Appointment(models.Model):
     rendezvous = models.ManyToManyField(User, related_name='rendezvous')
     date = models.DateField()
     time = models.TimeField()
-
-    def __str__(self):
-        return "Appointment {}: BKR: {} RDV: {}".format(self.id,
-                                                        self.booker.username,
-                                                        self.rendezvous.username)
