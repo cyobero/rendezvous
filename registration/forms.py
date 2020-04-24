@@ -25,8 +25,4 @@ class RegisterForm(UserCreationForm):
                 'placeholder': 'Email',
                 'required': 'true'
             }),
-            'password1': forms.PasswordInput(attrs={
-                'class': 'input100',
-                'placeholder': 'Password',
-            })
         }

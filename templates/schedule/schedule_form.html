@@ -2,5 +2,56 @@
 {% load static %}
 
 {% block page-title %}
-<title> Schedule </title>
-{% endblock %}
+<title>Schedule </title>
+{% endblock page-title %}
+
+
+
+{% block content %}
+<form method="POST" action="{% url 'success' %}" class="validate-form login100-form">{% csrf_token %}
+   <span class="login100-form-title p-b-33">
+	Schedule
+   </span>
+
+   <div class="wrap-input100 validate-input" data-validate = "Valid
+   username is required: ex@abc.xyz">
+	{{ form.rendezvous }}
+	<span class="focus-input100-1"></span>
+	<span class="focus-input100-2"></span>
+   </div>
+
+
+   <div class="wrap-input100 validate-input" data-validate = "Valid
+   username is required: ex@abc.xyz">
+	{{ form.date }}
+	<span class="focus-input100-1"></span>
+	<span class="focus-input100-2"></span>
+   </div>
+
+
+   <div class="wrap-input100 validate-input" data-validate = "Valid
+   username is required: ex@abc.xyz">
+	{{ form.time }}
+	<span class="focus-input100-1"></span>
+	<span class="focus-input100-2"></span>
+   </div>
+
+
+   <button class="login100-form-btn">
+	Book
+   </button>
+   </div>
+
+
+   <!-- Errors -->
+   <br>
+   {% for error_field, error_message in form.errors.items %}
+   <br>
+   <ol>
+	<p><font color="red">{{ error_message|striptags }}</font></p>
+   </ol>
+   {% endfor %}
+
+
+</form>
+{% endblock content %}

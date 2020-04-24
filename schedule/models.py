@@ -23,7 +23,8 @@ class Appointment(models.Model):
     `Rendezvous`. It does not represent an actual `Meeting`."""
     booker = models.OneToOneField(Booker, on_delete=models.CASCADE)
     rendezvous = models.OneToOneField(Rendezvous, on_delete=models.CASCADE)
-    scheduled_rendezvous = models.DateTimeField()
+    date = models.DateField()
+    time = models.TimeField()
 
     def __str__(self):
         return "Appointment {}: BKR: {} RDV: {}".format(self.id,
