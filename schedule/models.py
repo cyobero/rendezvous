@@ -6,10 +6,8 @@ from login.models import UserProfile
 class Appointment(models.Model):
     """Appointment is a SCHEDULED meeting between a `Booker` and an
     `Rendezvous`. It does not represent an actual `Meeting`."""
-    booker = models.OneToOneField(User, on_delete=models.CASCADE,
-                                  related_name='booker')
-    rendezvous = models.OneToOneField(User, on_delete=models.CASCADE,
-                                      related_name='rendezvous')
+    booker = models.ManyToManyField(User, related_name='booker')
+    rendezvous = models.ManyToManyField(User, related_name='rendezvous')
     date = models.DateField()
     time = models.TimeField()
 
