@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'registration',
+    'schedule',
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
