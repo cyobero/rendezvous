@@ -12,9 +12,9 @@ def schedule_view(request):
     if form.is_valid():
         rendezvous_list = Rendezvous.objects.all()
         form = form.clean()
-        form = form.cleaned_data.get('rendezvous')
-        date = form.cleaned_data.get('date')
-        time = form.cleaned_data.get('time')
+        rendezvous = form['rendezvous']
+        date = form['date']
+        time = form['time']
         # Create and save new `Appointment` object.
         appt = Appointment(booker=booker, rendezvous=rendezvous, date=date,
                            time=time).save()
@@ -22,3 +22,8 @@ def schedule_view(request):
     else:
         messages.error(request, "error")
     return render(request, 'schedule/schedule_form.html', {'form':form})
+
+
+@login_required
+def schedule_success_view(request):
+    return render(request, 'schedule/success.html')
