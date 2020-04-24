@@ -1,10 +1,11 @@
 from bootstrap_datepicker_plus import DatePickerInput
 from django import forms
-from schedule.models import Appointment, Rendezvous
+from schedule.models import Appointment
+from django.contrib.auth.models import User
 
 
 class ScheduleForm(forms.ModelForm):
-    RENDEZVOUS_CHOICES = Rendezvous.objects.all()
+    RENDEZVOUS_CHOICES = User.objects.all()
     rendezvous = forms.ModelChoiceField(queryset=RENDEZVOUS_CHOICES)
     class Meta:
         model = Appointment
