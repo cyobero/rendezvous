@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'registration',
     'schedule',
     'bootstrap_datepicker_plus',
+    'userprofile',
 ]
 
 MIDDLEWARE = [

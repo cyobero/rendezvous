@@ -3,10 +3,11 @@ from django import forms
 from django.db.models import Q
 from schedule.models import Appointment
 from django.contrib.auth.models import User
+from login.models import UserProfile
 
 
 class ScheduleForm(forms.ModelForm):
-    RENDEZVOUS_CHOICES = User.objects.all()
+    RENDEZVOUS_CHOICES = UserProfile.objects.all()
     rendezvous = forms.ModelChoiceField(queryset=RENDEZVOUS_CHOICES)
     class Meta:
         model = Appointment

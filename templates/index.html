@@ -1,4 +1,4 @@
-
+{% load static %}
 <!doctype html>
 <html>
    <head>
@@ -9,6 +9,7 @@
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    </head>
+   <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"
    <body>
 	{% block custom-css %}{% endblock custom-css %}
 	{% block navbar %}
@@ -25,12 +26,13 @@
 			<a class="nav-link" href="{% url 'schedule' %}">schedule</a>
 		   </li>
 
+		   {% block nav-active-appointments %}
 		   <li class="nav-item">
-			<a class="nav-link" href="#">My Appointments</a>
+			{% endblock nav-active-appointments %}
+			<a class="nav-link" href="{% url 'appointments' %}">My Appointments</a>
 		   </li>
 		</ul>
 	   </div>
-
 
 
 	   <!-- navbar right -->
