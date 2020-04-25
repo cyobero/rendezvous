@@ -11,7 +11,7 @@ class ScheduleForm(forms.ModelForm):
     rendezvous = forms.ModelChoiceField(queryset=RENDEZVOUS_CHOICES)
     class Meta:
         model = Appointment
-        fields = ['rendezvous', 'date', 'time', ]
+        fields = ['rendezvous', 'date', 'time', 'details', ]
         widgets = {  
             'rendezvous': forms.Select(attrs={
                 'class': 'input100 form-control',
@@ -25,5 +25,9 @@ class ScheduleForm(forms.ModelForm):
                 'class': 'input100 form-control',
                 'placeholder': 'Time',
                 'type': 'time'
+            }),
+            'details': forms.Textarea(attrs={
+                'class': 'input100 form-control',
+                'placeholder': 'Enter additional notes here (if any)...',
             })
         }

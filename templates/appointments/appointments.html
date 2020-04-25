@@ -59,19 +59,16 @@
 	   <div class="col-md-8">
 
 		{% for appt in appointments %}
-		<div class="flip-card" style="width: 25rem;">
-		   <div class="flip-card-inner">
-			<div class="flip-card-front">
+		<div class="card" style="width: 25rem;">
 			<img class="card-img-top" src="{{ appt.rendezvous.image.url }}" alt="Card image cap">
 			<div class="card-body">
 			   <h4 class="leading card-title">Rendezvous with {{ appt.rendezvous }}</h4>
 			   <p class="leading card-text">Date: {{ appt.date }}</p>
 			   <p class="leading card-text">Time: {{ appt.time }}</p><br>
+			   <p class="card-text">{{ appt.details }}</p>
 			   <a href="#" class="btn btn-primary">Details</a>
 			</div>
-		   </div>
-		</div>
-		<br>
+		</div><br>
 		{% endfor %}
 	   </div>
 	</div>

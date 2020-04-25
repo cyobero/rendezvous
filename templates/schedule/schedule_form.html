@@ -1,4 +1,4 @@
-{% extends 'base_form.html' %}
+{% extends 'index.html' %}
 {% load static %}
 
 {% block page-title %}
@@ -7,52 +7,72 @@
 
 
 
-<form method="POST" class="validate-form login100-form">{% csrf_token %}
-   {% block form-title %}
-   <span class="login100-form-title p-b-33">
-	Schedule Appointment
-   </span>
-   {% endblock form-title %}
-   {% block form-content %}
-   <div class="wrap-input100 validate-input" data-validate = "Valid
-   username is required: ex@abc.xyz">
-	{{ form.rendezvous }}
-	<span class="focus-input100-1"></span>
-	<span class="focus-input100-2"></span>
+{% block content %}
+<br>
+<div class="container">
+
+   <div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-7">
+
+<h4 class="display-4">Schedule Appointment</h4>
+	   <form method="POST" class="validate-form login100-form">{% csrf_token %}
+		<div class="card w-70">
+		   <div class="card-body">
+			<h5 class="card-title">Schedule Appointment</h5>
+			<div class="wrap-input100 validate-input" data-validate = "Valid
+			username is required: ex@abc.xyz">
+			   {{form.rendezvous.label}}	{{ form.rendezvous }}
+			   <span class="focus-input100-1"></span>
+			   <span class="focus-input100-2"></span>
+			</div>
+
+
+			<div class="wrap-input100 validate-input" data-validate = "Valid
+			username is required: ex@abc.xyz">
+			   {{form.date.label}}	{{ form.date }}
+			   <span class="focus-input100-1"></span>
+			   <span class="focus-input100-2"></span>
+			</div>
+
+
+			<div class="wrap-input100 validate-input" data-validate = "Valid
+			username is required: ex@abc.xyz">
+			   {{form.time.label}}	{{ form.time }}
+			   <span class="focus-input100-1"></span>
+			   <span class="focus-input100-2"></span>
+			</div>
+
+
+
+			<div class="wrap-input100 validate-input" data-validate = "Valid
+			username is required: ex@abc.xyz">
+			   {{form.details.label}}	{{ form.details }}
+			   <span class="focus-input100-1"></span>
+			   <span class="focus-input100-2"></span>
+			</div>
+
+
+			<button class="login100-form-btn btn-primary">
+			   Book
+			</button>
+		   </div>
+
+
+		   <!-- Errors -->
+		   <br>
+		   {% for error_field, error_message in form.errors.items %}
+		   <br>
+		   <ol>
+			<p><font color="red">{{ error_message|striptags }}</font></p>
+		   </ol>
+		   {% endfor %}
+
+
+	   </form>
+
+
+		</div>
+	</div>
    </div>
-
-
-   <div class="wrap-input100 validate-input" data-validate = "Valid
-   username is required: ex@abc.xyz">
-	{{ form.date }}
-	<span class="focus-input100-1"></span>
-	<span class="focus-input100-2"></span>
-   </div>
-
-
-   <div class="wrap-input100 validate-input" data-validate = "Valid
-   username is required: ex@abc.xyz">
-	{{ form.time }}
-	<span class="focus-input100-1"></span>
-	<span class="focus-input100-2"></span>
-   </div>
-
-
-   <button class="login100-form-btn">
-	Book
-   </button>
-   </div>
-
-
-   <!-- Errors -->
-   <br>
-   {% for error_field, error_message in form.errors.items %}
-   <br>
-   <ol>
-	<p><font color="red">{{ error_message|striptags }}</font></p>
-   </ol>
-   {% endfor %}
-
-
-</form>
-{% endblock form-content %}
+   {% endblock content %}

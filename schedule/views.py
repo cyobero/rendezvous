@@ -16,8 +16,9 @@ def schedule_view(request):
         rendezvous = form['rendezvous']
         date = form['date']
         time = form['time']
+        details = form['details']
         # Create and save new `Appointment` object.
-        appt = Appointment.objects.create(rendezvous=rendezvous, date=date, time=time)
+        appt = Appointment.objects.create(rendezvous=rendezvous, date=date, time=time, details=details)
         booker.appointments.add(appt)
         return redirect(reverse('success_schedule'))
     else:
