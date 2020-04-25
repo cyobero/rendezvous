@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
@@ -20,6 +22,7 @@ from rendezvous.views import index_view
 from login.views import login_view, success_view, logout_view
 from registration.views import register_view
 from schedule.views import schedule_view, schedule_success_view
+from userprofile.views import appointments_view
 
 urlpatterns = [
     # Add Django site authentication urls (for login, logout, and password mgmt)
@@ -33,4 +36,5 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('schedule/', schedule_view, name='schedule'),
     path('schedule/success', schedule_success_view, name='success_schedule'),
-]
+    path('appointments/', appointments_view, name='appointments'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

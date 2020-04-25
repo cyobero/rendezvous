@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block page-title %}
 <title>Rendezvous Booked</title>
+{% block custom-css %}
+<meta http-equiv="refresh" content="3;URL={% url 'index' %}">
+{% endblock custom-css %}
 {% endblock page-title %}
 
 {% block content %}
-
+<h2 align="center">Success! Redirecting to home page.</h2>
 {%endblock content%}

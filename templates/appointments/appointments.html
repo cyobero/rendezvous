@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block page-title %}
+<title>My Appointments</title>
+{% endblock page-title %}
+
+{% block custom-css %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+{% endblock custom-css %}
+
+{% block nav-active-appointments %}
+<li class="nav-item active">
+   {% endblock nav-active-appointments %}
+
+
+   {% block content %}
+   <div class="container">
+	<div class="row">
+	   <div class="col-md-2"></div>
+	   <div class="col-md-9">
+		<h3 class="display-3">My Appointments</h3><hr>
+	   </div>
+	</div>
+   </div>
+
+
+   <div class="container">
+	<div class="row">
+	   <div class="col-md-3"></div>
+	   <div class="col-md-8">
+
+		{% for appt in appointments %}
+		<div class="card" style="width: 25rem;">
+			<img class="card-img-top" src="{{ appt.rendezvous.image.url }}" alt="Card image cap">
+			<div class="card-body">
+			   <h4 class="leading card-title">Rendezvous with {{ appt.rendezvous }}</h4>
+			   <p class="leading card-text">Date: {{ appt.date }}</p>
+			   <p class="leading card-text">Time: {{ appt.time }}</p><br>
+			   <p class="card-text">{{ appt.details }}</p>
+			   <a href="#" class="btn btn-primary">Details</a>
+			</div>
+		</div><br>
+		{% endfor %}
+	   </div>
+	</div>
+   </div> <!-- .container -->
+
+
+
+   {% endblock content %}
