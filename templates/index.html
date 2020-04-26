@@ -46,6 +46,7 @@
 
 		   <span class="glyphicon glyphicon-user"></span>
 		   <a class="nav-link" href="{% url 'login' %}">login</a>
+
 		   {% endif %}
 		</li>
 	   </ul>
@@ -62,6 +63,34 @@
 		   {% if request.user.is_authenticated %}
 		   <h3 class="display-3">Hello, {{ request.user.username }}</h3>
 		   {% endif %}
+		</div>
+	   </div>
+	</div>
+	<br><br>
+	<div class="container">
+	   <div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+
+
+		   <!-- Search form -->
+		   <form method="GET">
+			<div class='form-group'>
+			   {{form.as_p}}
+			   <button class="btn btn-primary" type="submit">Search</button>
+		   </form>
+			</div>
+			<br>
+			{% if users.count == 0 %}
+			<p>No matching results</p>
+			{% endif %}
+			{% if users %}
+			<p>Found {{ users.count }} users</p>
+			{% for user in users %}
+			<ul>
+			   <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
+			   {% endfor %}
+			   {% endif %}
 		</div>
 	   </div>
 	</div>
