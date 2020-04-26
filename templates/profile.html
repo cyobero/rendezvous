@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block page-title %}
+<title>{{ profile.user.username }}'s profile</title>
+{% endblock page-title %}
+
+{% block content %}
+<br>
+<div class="container">
+   <div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-9">
+
+
+	</div> <!-- .div-row -->
+   </div>
+</div> <!-- .container -->
+<br>
+
+
+<div class="container">
+   <div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-9">
+	   <div class="card bg-light mb-4" style="width: 25rem;">
+		<img class="card-img-top" src="{{profile.image.url}}" alt="Card image cap">
+		<div class="card-body">
+		   <h5 class="card-title">{{profile.user.username}}</h5>
+		   <p class="card-text">I can't believe I ate the whole thing.</p>
+		   <a href="#" class="btn btn-primary">Book Appointment</a>
+		</div>
+	   </div>
+	</div> <!-- .col-md-9 -->
+   </div>
+</div> <!-- .container -->
+{% endblock content %}
